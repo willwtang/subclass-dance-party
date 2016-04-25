@@ -9,7 +9,7 @@ body{
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
-.title, .addDancerButton{
+.title, .addDancerButton, .lineUp{
   padding:5px 12px;
   float:right;
 }
@@ -21,7 +21,29 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  border:10px solid red;
-  border-radius:10px;
+/*  display: inline-block;
+  position: absolute;*/
+  border: 10px solid red;
+  border-radius: 10px;
   position:absolute;
 }
+/*.dancerHead{
+  width: 50px;
+  height: 60px;
+  background-image: url('images/GWBHead.png');
+  background-size: 100% auto;
+}
+.leftHead{
+  transform: rotate(330deg);
+}
+.rightHead{
+  transform: rotate(30deg);
+}
+.dancerBody{
+  max-width: 30px;
+  max-height: 50px;
+  height: auto;
+  width: auto;
+  background-image: url('images/dance.gif');
+  background-size: 100% auto;
+}*/
