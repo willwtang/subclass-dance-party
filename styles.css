@@ -20,13 +20,17 @@ body, a:link, a:visited, a:active{
 .title{
   background-color: #777;
 }
-.dancer{
+.dancer {
   display: inline-block;
   position: absolute;
+}
+.fish{
   background-image: url('images/TestFish.png');
   background-size: 100% auto;
   width: 200px;
   height: 100px;
+  background-repeat: no-repeat;
+  margin: 0;
 /*  border: 10px solid red;
   border-radius: 10px;
   position:absolute;*/
@@ -35,7 +39,41 @@ body, a:link, a:visited, a:active{
   transform: scaleX(-1);
 }
 .hookedFish {
-  transform: rotate(270deg);
+  background-image: url('images/TestFishRotate.png') !important;
+  width: 100px;
+  height: 200px;
+}
+.hook {
+  display: inline-block;
+  background-image: url('images/BlackHook.png');
+  background-size: 100% auto;
+  width: 100px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.blueYellow {
+  background-image: url('images/TestFish1.png');
+  background-size: 100% auto;
+  width: 100px;
+  height: 82px;
+  background-repeat: no-repeat;
+  margin: 0;
+}
+.rotate {
+  transform: rotate(315deg);
+}
+
+.BYhook {
+  display: block;
+  background-image: url('images/TestFish1Rotate.png');
+  background-size: 100% auto;
+  width: 82px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/*  border: 10
 }
 /*.dancerHead{
   width: 50px;

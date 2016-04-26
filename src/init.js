@@ -25,17 +25,11 @@ $(document).ready(function() {
     var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
-      Math.random() * 1000
+      Math.random() * 100
     );
     console.log($('body').width());
     $('body').append(dancer.$node);
-    console.log($('body').find('.dancer'));
     window.dancers.push(dancer);
-  });
-  $('body').find('.dancer').on('click', function(event) {
-    console.log('this');
-    //this.removeClass('leftFish');
-    this.addClass('hookedFish');
   });
 });
 
