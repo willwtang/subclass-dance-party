@@ -19,37 +19,23 @@ $(document).ready(function() {
 
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
-
+    console.log(dancerMakerFunction);
     // make a dancer with a random position
-
+    
     var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    console.log($('body').width());
     $('body').append(dancer.$node);
+    console.log($('body').find('.dancer'));
     window.dancers.push(dancer);
   });
-  $('.lineUp').on('click', function(event) {
-    var left = 100;
-    var top = 30;
-    for (var i = 0; i < window.dancers.length; i++) {
-      window.dancers[i].lineUp(top, left);
-      top += 30;
-    }
-  });
-  $('.checkDistance').on('click', function(event) {
-    for (var i = 0; i < window.dancers.length; i++) {
-      for (var j = 0; j < window.dancers.length; j++) {
-        if (i !== j) {
-          window.dancers[i].checkDistance(window.dancers[j]);
-        }
-      }
-    }
-  });
-  $('body').find('.dancer').on('mouseover', function(event) {
-    console.log('HERE');
-    this.css('border', '10px solid yellow');
+  $('body').find('.dancer').on('click', function(event) {
+    console.log('this');
+    //this.removeClass('leftFish');
+    this.addClass('hookedFish');
   });
 });
 
