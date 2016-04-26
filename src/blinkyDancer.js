@@ -32,3 +32,10 @@ makeBlinkyDancer.prototype.lineUp = function(top, left) {
   this.setPosition();
 };
 
+makeBlinkyDancer.prototype.checkDistance = function(dancer2) {
+  var distance = Math.sqrt(Math.pow(dancer2.top - this.top, 2) + Math.pow(dancer2.left - this.left, 2));
+  //if (distance < 2000) {
+  this.$node.css('border', '10px solid blue');
+  dancer2.$node.css('border', '10px solid blue');
+  //}
+};

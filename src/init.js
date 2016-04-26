@@ -38,5 +38,18 @@ $(document).ready(function() {
       top += 30;
     }
   });
+  $('.checkDistance').on('click', function(event) {
+    for (var i = 0; i < window.dancers.length; i++) {
+      for (var j = 0; j < window.dancers.length; j++) {
+        if (i !== j) {
+          window.dancers[i].checkDistance(window.dancers[j]);
+        }
+      }
+    }
+  });
+  $('body').find('.dancer').on('mouseover', function(event) {
+    console.log('HERE');
+    this.css('border', '10px solid yellow');
+  });
 });
 
