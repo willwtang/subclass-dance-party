@@ -3,7 +3,9 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#00FFFF;
+  background-image: url('images/Underwater2.png');
+  background-repeat: no-repeat;
+  background-size: contain;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{

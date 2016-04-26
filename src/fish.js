@@ -3,11 +3,14 @@ var Fish = function(top, left, timeBetweenSteps) {
   this.direction = 'left';
   this.$node.append($('<div class="fish"></div>'));
   var context = this;
+  this.isHooked = false;
   this.$node.click(function(event) {
+    context.isHooked = true;
     $(this).find('.fish').removeClass('leftFish').addClass('hookedFish');
     context.direction = 'up';
     context.timeBetweenSteps = 10;
     $(this).prepend($('<div class="hook"></div>'));
+    $(this).unbind();
     //$(this).css('display', 'block');
   });
 };
@@ -51,6 +54,7 @@ var BlueYellow = function(top, left, timeBetweenSteps) {
     context.timeBetweenSteps = 10;
     $(this).prepend($('<div class="hook"></div>'));
     context.isHooked = true;
+    $(this).unbind();
     //$(this).css('display', 'block');
   });
 };
