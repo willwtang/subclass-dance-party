@@ -94,33 +94,13 @@ Fish.prototype.changeDirection = function(newDir) {
   } else {
     var left = newDir[0];
     var top = newDir[1];
-    var radian;
-    if (left === 0 || top === 0) {
-      if (left === 0) {
-        if (top > 0) {
-          radian = Math.PI / 2;
-        } else {
-          radian = 3 * Math.PI / 2;
-        }
-      }
-      if (top === 0) {
-        if (left > 0) {
-          radian = 2 * Math.PI;
-        } else {
-          radian = Math.PI;
-        }
-      }
+    var radian = Math.atan2(top, left);
+    if (radian > -Math.PI / 2 && radian < Math.PI / 2) {
+      this.$node.children().last().css('transform', 'rotate(' + radian + 'rad)');
     } else {
-      var tanVal = Math.atan2(top, left);
-      if (top > 0 && left > 0) {
-        radian = tanVal;
-      } else if (top > 0 && left < 0) {
-        radian = tanVal
-      } else if (top < 0 && left < 0) {
-
-      } else {
-
-      }
+      this.$node.children().last().css('transform', 'rotate(' + radian + 'rad) rotateX(180deg)');
+    }
+    
   }
 };
 
@@ -130,10 +110,11 @@ var BlueYellow = function(top, left, timeBetweenSteps) {
   this.$node.append($('<div class="blueYellow"></div>'));
   this.isHooked = false;
   var context = this;
+  this.hooked = '<div class="BYhook"></div>';
   this.$node.unbind().click(function(event) {
     context.isHooked = true;
-    $(this).find('.blueYellow').remove();
-    $(this).append('<div class="BYhook"></div>');
+    $(this).empty();
+    $(this).append(context.hooked);
     context.direction = 'north';
     context.timeBetweenSteps = 10;
     $(this).prepend($('<div class="hook"></div>'));
@@ -176,3 +157,73 @@ BlueYellow.prototype.step = function() {
   this.setPosition();
 };
 
+var PurpleBlue = function(top, left, timeBetweenSteps) {
+  BlueYellow.call(this, top, left, 100);
+  this.direction = 'e';
+  this.$node.empty().append($('<div class="purpleBlue"></div>'));
+  this.hooked = '<div class="PBhook"></div>';
+};
+
+PurpleBlue.prototype = Object.create(BlueYellow.prototype);
+PurpleBlue.prototype.constructor = PurpleBlue;
+
+PurpleBlue.prototype.step = function() {
+  makeDancer.prototype.step.call(this);
+
+  if (this.left > $('body').width()) {
+    this.direction = 'west';
+    this.top -= 200;
+  } 
+  if (this.left < -200) {
+    this.direction = 'east';
+    this.top -= 200;
+  }
+
+  if (!this.isHooked) {
+    this.wave();
+  } else {
+    this.north();
+  }
+  if (this.top < -100) {
+    this.$node.remove();
+  }
+  this.setPosition();
+};
+
+PurpleBlue.prototype.wave = function() {
+  var s = Math.sin(this.left / 100);
+  var y = 10 * s;
+  this.top += y;
+  if (this.direction === 'east') {
+    this.left += 10;
+    this.changeDirection([5, y]);
+  } else {
+    this.left -= 10;
+    this.changeDirection([-5, y]);
+  }
+
+};
+
+var Shark = function(top, left, timeBetweenSteps) {
+  Fish.call(this, top, left, timeBetweenSteps);
+  this.$node.empty().append($('<div class="Shark"></div>'));
+  var context = this;
+  this.$node.unbind().click(function(event) {
+    context.isHooked = true;
+    $(this).empty();
+    $(this).append('<div class="hookedShark"></div>');
+    context.direction = 'north';
+    context.timeBetweenSteps = 10;
+    $(this).prepend($('<div class="hook"></div>'));
+    $(this).unbind();
+    //$(this).css('display', 'block');
+  });
+};
+
+Shark.prototype = Object.create(Fish.prototype);
+Shark.prototype.constructor = Shark;
+
+Shark.prototype.step = function() {
+  Fish.prototype.step.call(this);
+  this.$node.collision('div').find('.fish, .blueYellow, .purpleBlue').remove();
+};

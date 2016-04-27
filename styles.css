@@ -5,7 +5,7 @@ body{
   margin: 0px;
   background-image: url('images/Underwater2.png');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100% 100%;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -72,6 +72,43 @@ body, a:link, a:visited, a:active{
   background-size: 100% auto;
   width: 82px;
   height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.purpleBlue {
+  background-image: url('images/TestFish5.png');
+  background-size: 100% auto;
+  width: 150px;
+  height: 101px;
+  background-repeat: no-repeat;
+  margin: 0;
+}
+
+.PBhook {
+  display: block;
+  background-image: url('images/TestFish5Rotate.png');
+  background-size: 100% auto;
+  width: 101px;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Shark {
+  background-image: url('images/Shark.png');
+  background-size: 100% auto;
+  width: 209px;
+  height: 200px;
+  background-repeat: no-repeat;
+  margin: 0;
+}
+
+.hookedShark {
+  display: block;
+  background-image: url('images/SharkRotate.png');
+  background-size: 100% auto;
+  width: 200px;
+  height: 209px;
   margin-left: auto;
   margin-right: auto;
 }
